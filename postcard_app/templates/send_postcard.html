@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Send the postcard to your friends!</title>
+</head>
+<body>
+    <form method="POST" action="/send_postcard">
+        <label for="email">Enter your friend's email</label>
+        <input type="email" name="email" id="email" required />
+        <input type="submit" value="Send the postcard" />
+        {% if file_name %}
+        <input type="hidden" name="file_name" value="{{ file_name }}">
+        {% endif %}
+    </form>
+    {% if file_name %}
+    <img src="{{ url_for('static', filename='pictures/' ~ file_name) }}" alt="Your postcard" />
+    {% endif %}
+</body>
+</html>
